@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: nginx-tomcat-depl
+spec:
+ replicas: 1
+ selector:
+  matchLabels:
+   app: myapp
+   environment: dev
+ template:
+  metadata:
+   labels:
+    app: myapp
+    environment: dev
+  spec:
+   volumes:
+   - name: volume1
+     hostPath:
+      path: /mnt/data1
+   - name: volume2
+     hostPath:
+      path: /mnt/data2
+  
+  
+   containers:
+   - name: c1-nginx
+     image: nginx
+     volumeMounts:
+     - mountPath: /var/nginxdata
+       name: volume1
+   
+   - name: c2-tomcat
+     image: tomcat
+     volumeMounts:
+     - mountPath: /var/tomcatdata
+       name: volume2
