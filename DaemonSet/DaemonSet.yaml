@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: DaemonSet #Creates pods on all worker nodes
+metadata:
+ name: nginx
+ labels:
+  app: nginx
+spec:
+ selector:
+  matchLabels: 
+   app: nginx
+ template:
+  metadata:
+   labels: 
+    app: nginx
+  spec:
+   containers:
+   - name: nginx
+     image: nginx
+  #  nodeSelector:
+  #   gpupresent: true #we create label for a node as gpupresent=true - pods will be created on the node with this label
