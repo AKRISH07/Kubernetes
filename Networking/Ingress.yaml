@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+ name: new-allow-from-old
+spec:
+ policyTypes:
+ - Ingress
+ podSelector:
+  matchLabels:
+   app: new
+ ingress:
+ - from:
+   - podSelector:
+      matchLabels:
+       app: old
+

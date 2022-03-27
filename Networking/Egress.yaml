@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+ name: old-allow-to-new
+spec:
+ policyTypes:
+ - Egress
+ podSelector:
+  matchLabels: 
+   app: old
+ egress:
+ - to:
+   - podSelector:
+      matchLabels:
+       app: new
+ - ports:
+   - port: 53
+     protocol: TCP
+   - port: 53
+     protocol: UDP

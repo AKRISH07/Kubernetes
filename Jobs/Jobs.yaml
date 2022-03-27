@@ -1,0 +1,13 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+ name: hello
+spec:
+ #backoffLimit - 2 - means tries creating only 2 pods if failure occurs in command
+ template:
+  spec:
+   containers:
+   - name: busybox
+     image: busybox
+     command: ["echo", "Hello"]
+   restartPolicy: Never

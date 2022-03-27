@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: nginx
+ labels:
+  app: nginx
+spec:
+ replicas: 4
+ selector:
+  matchLabels:
+   app: nginx
+ minReadySeconds: 5 #Wait for 5 seconds before create another pod
+ strategy:
+  type: Recreate
+ template:
+  metadata:
+   labels: 
+    app: nginx
+  spec:
+   containers:
+   - name: nginx
+     image: nginx
+     ports:
+     - containerPort: 80
