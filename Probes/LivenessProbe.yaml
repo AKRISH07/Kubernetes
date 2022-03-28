@@ -27,5 +27,5 @@ spec:
           - cat
           - Hello
          initialDelaySeconds: 5
-         periodSeconds: 3
+         periodSeconds: 3 #times after to check again
 
