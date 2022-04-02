@@ -15,5 +15,5 @@ spec:
             command:
             - /bin/sh
             - -c
-            - date; echo Hello..
+            - date; echo Hello
           restartPolicy: OnFailure
